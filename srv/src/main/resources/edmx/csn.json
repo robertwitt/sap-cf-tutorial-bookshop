@@ -143,25 +143,25 @@
           "type": "cds.UUID",
           "@cds.persistence.name": "ID"
         },
-        "books": {
-          "origin": "my.bookshop.Orders..books",
+        "book": {
+          "origin": "my.bookshop.Orders..book",
           "indexNo": 2,
           "value": {
-            "=": "Orders.books"
+            "=": "Orders.book"
           },
           "type": "cds.Association",
           "target": "CatalogService.Books",
           "foreignKeys": {
             "ID": {
-              "origin": "my.bookshop.Orders..books.ID",
+              "origin": "my.bookshop.Orders..book.ID",
               "indexNo": 1,
               "path": "ID",
-              "generatedFieldName": "books_ID",
+              "generatedFieldName": "book_ID",
               "@cds.persistence.name": "ID"
             }
           },
           "redirected": true,
-          "@cds.persistence.name": "BOOKS"
+          "@cds.persistence.name": "BOOK"
         },
         "buyer": {
           "origin": "my.bookshop.Orders..buyer",
@@ -190,14 +190,14 @@
           "type": "cds.Integer",
           "@cds.persistence.name": "AMOUNT"
         },
-        "books_ID": {
+        "book_ID": {
           "type": "cds.Integer",
           "value": {
-            "=": "Orders.books_ID"
+            "=": "Orders.book_ID"
           },
-          "origin": "my.bookshop.Orders..books_ID",
-          "@odata.foreignKey4": "books",
-          "@cds.persistence.name": "BOOKS_ID"
+          "origin": "my.bookshop.Orders..book_ID",
+          "@odata.foreignKey4": "book",
+          "@cds.persistence.name": "BOOK_ID"
         }
       },
       "@cds.persistence.name": "CATALOGSERVICE_ORDERS"
@@ -290,7 +290,7 @@
           "type": "cds.UUID",
           "@cds.persistence.name": "ID"
         },
-        "books": {
+        "book": {
           "indexNo": 2,
           "type": "cds.Association",
           "target": "my.bookshop.Books",
@@ -298,11 +298,11 @@
             "ID": {
               "path": "ID",
               "indexNo": 1,
-              "generatedFieldName": "books_ID",
+              "generatedFieldName": "book_ID",
               "@cds.persistence.name": "ID"
             }
           },
-          "@cds.persistence.name": "BOOKS"
+          "@cds.persistence.name": "BOOK"
         },
         "buyer": {
           "indexNo": 3,
@@ -319,10 +319,10 @@
           "type": "cds.Integer",
           "@cds.persistence.name": "AMOUNT"
         },
-        "books_ID": {
+        "book_ID": {
           "type": "cds.Integer",
-          "@odata.foreignKey4": "books",
-          "@cds.persistence.name": "BOOKS_ID"
+          "@odata.foreignKey4": "book",
+          "@cds.persistence.name": "BOOK_ID"
         }
       },
       "@cds.persistence.name": "MY_BOOKSHOP_ORDERS"

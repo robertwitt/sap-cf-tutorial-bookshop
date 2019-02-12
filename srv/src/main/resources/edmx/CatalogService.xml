@@ -34,7 +34,7 @@
           <End Role="Books" EntitySet="Books"/>
           <End Role="Authors" EntitySet="Authors"/>
         </AssociationSet>
-        <AssociationSet Name="Orders_books" Association="CatalogService.Orders_books">
+        <AssociationSet Name="Orders_book" Association="CatalogService.Orders_book">
           <End Role="Orders" EntitySet="Orders"/>
           <End Role="Books" EntitySet="Books"/>
         </AssociationSet>
@@ -62,11 +62,11 @@
           <PropertyRef Name="ID"/>
         </Key>
         <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
-        <NavigationProperty Name="books" Relationship="CatalogService.Orders_books" FromRole="Orders" ToRole="Books"/>
+        <NavigationProperty Name="book" Relationship="CatalogService.Orders_book" FromRole="Orders" ToRole="Books"/>
         <Property Name="buyer" Type="Edm.String"/>
         <Property Name="date" Type="Edm.DateTimeOffset"/>
         <Property Name="amount" Type="Edm.Int32"/>
-        <Property Name="books_ID" Type="Edm.Int32"/>
+        <Property Name="book_ID" Type="Edm.Int32"/>
       </EntityType>
       <Association Name="Books_author">
         <End Role="Books" Type="CatalogService.Books" Multiplicity="*"/>
@@ -80,7 +80,7 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
-      <Association Name="Orders_books">
+      <Association Name="Orders_book">
         <End Role="Orders" Type="CatalogService.Orders" Multiplicity="*"/>
         <End Role="Books" Type="CatalogService.Books" Multiplicity="0..1"/>
         <ReferentialConstraint>
@@ -88,7 +88,7 @@
             <PropertyRef Name="ID"/>
           </Principal>
           <Dependent Role="Orders">
-            <PropertyRef Name="books_ID"/>
+            <PropertyRef Name="book_ID"/>
           </Dependent>
         </ReferentialConstraint>
       </Association>

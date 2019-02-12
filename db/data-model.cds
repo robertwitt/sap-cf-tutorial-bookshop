@@ -15,7 +15,7 @@ entity Authors {
 
 entity Orders {
 	key ID: UUID;
-	books: association to Books;
+	book: association to Books;
 	buyer: String;
 	date: DateTime;
 	amount: Integer;
