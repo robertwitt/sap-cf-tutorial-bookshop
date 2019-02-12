@@ -1,22 +1,22 @@
 {
-  "name": "bookshop",
-  "description": "Reference application built according to the application programming model for SAP Cloud Platform",
-  "version": "1.0.0",
-  "dependencies": {
-    "@sap/cds": "2.x"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "build": "cds build --clean",
-    "watch": "nodemon -w . -i node_modules/**,.git/** -e cds -x npm run build"
-  },
-  "cds": {
-    "data": {
-      "model": "db/"
-    },
-    "service": {
-      "model": "srv/"
-    }
-  },
-  "private": true
+	"name": "bookshop",
+	"description": "Reference application built according to the application programming model for SAP Cloud Platform",
+	"version": "1.0.0",
+	"dependencies": {
+		"@sap/cds": "2.x"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"build": "cds build --clean && cds compile db/data-model.cds -o ./",
+		"watch": "nodemon -w . -i node_modules/**,.git/** -e cds -x npm run build"
+	},
+	"cds": {
+		"data": {
+			"model": "db/"
+		},
+		"service": {
+			"model": "srv/"
+		}
+	},
+	"private": true
 }

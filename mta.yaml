@@ -24,38 +24,35 @@ modules:
     requires:
       - name: bookshop-hdi-container
         properties:
-          JBP_CONFIG_RESOURCE_CONFIGURATION: >-
-            [tomcat/webapps/ROOT/META-INF/context.xml:
-            {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]
-
+          JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomee/webapps/ROOT/WEB-INF/resources.xml: {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
+    properties:
+      TARGET_RUNTIME: tomee
+      buildpack: sap_java_buildpack
   - name: app
     type: html5
     path: app
     parameters:
-       disk-quota: 256M
-       memory: 256M
+      disk-quota: 256M
+      memory: 256M
     build-parameters:
-       builder: grunt
+      builder: grunt
     requires:
-     - name: srv_api
-       group: destinations
-       properties:
+      - name: srv_api
+        group: destinations
+        properties:
           forwardAuthToken: true
           strictSSL: false
           name: srv_api
-          url: ~{url}
-     - name: uaa_bookshop
-
+          url: '~{url}'
+      - name: uaa_bookshop
 resources:
   - name: bookshop-hdi-container
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-
   - name: uaa_bookshop
     parameters:
-       path: ./xs-security.json
-       service-plan: application
-       service: xsuaa
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
     type: org.cloudfoundry.managed-service
-
